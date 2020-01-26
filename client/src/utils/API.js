@@ -10,6 +10,7 @@ export default {
   // Gets all books
   // getBooks: () => axios.get("/api/books"),
   getBooks: () => fetch(`/api/books`),
+  getUsersBooks: user_id => axios.get("/user/books/" + user_id),
 
   // Gets the book with the given title
   getBook: book_id => axios.get("/api/books/" + book_id),

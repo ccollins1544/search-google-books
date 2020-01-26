@@ -6,12 +6,13 @@ export const UserConsumer = UserContext.Consumer;
 
 function UserProvider({ children }){
 
-  const [user, setUser] = useState({
+  const [userState, setUser] = useState({
     loggedIn: false,
     username: null,
     password: '',
     confirmPassword: '',
-    redirectTo: null
+    redirectTo: null,
+    user_id: 0
   });
 
   const updateUser = (userObject) => {
@@ -28,14 +29,15 @@ function UserProvider({ children }){
         setUser(prevState => ({...prevState,
           loggedIn: true,
           username: response.data.user.username,
-          redirectTo: '/'
+          user_id: response.data.user._id,
         }));
         
       } else {
         console.log('Get user: no user');
         setUser(prevState => ({...prevState,
           loggedIn: false,
-          username: null
+          username: null,
+          user_id: 0
         }));
       }
     })
@@ -43,8 +45,6 @@ function UserProvider({ children }){
 
   const handleUserChange = event => {
     const { name, value } = event.target;
-    console.log(name + ":" + value);
-
     setUser(prevState => ({...prevState, 
       [name]: value
     }));
@@ -52,22 +52,18 @@ function UserProvider({ children }){
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    console.log('handleLoginSubmit');
 
-    let { username, password } = user;
+    let { username, password } = userState;
     let userData = { "username": username, "password": password };
-
-    console.log("userData", userData);
 
     API.login(userData)
       .then(response => {
-        console.log('login response: ', response);
-
         if (response.status === 200) {
           // update App.js state
           setUser(prevState => ({...prevState,
             loggedIn: true,
             username: response.data.username,
+            user_id: response.data._id,
             redirectTo: '/'
           }));
         }
@@ -79,14 +75,12 @@ function UserProvider({ children }){
 
   const handleRegisterSubmit = (event) => {
     event.preventDefault();
-    console.log('handleRegisterSubmit');
 
-    let { username, password } = user;
+    let { username, password } = userState;
     let registerData = { "username": username, "password": password };
     
     API.register(registerData)
       .then(response => {
-        console.log("register response: ", response);
 
         if (!response.data.errmsg) {
 					console.log('successful signup')
@@ -104,18 +98,16 @@ function UserProvider({ children }){
 
   const handleLogout = (event) => {
     event.preventDefault();
-    console.log('handleLogout');
-    
     API.logout()
       .then(response => {
-        console.log(response.data)
           if (response.status === 200) {
             updateUser({
               loggedIn: false,
               username: null,
               password: '',
               confirmPassword: '',
-              redirectTo: '/'
+              redirectTo: '/', 
+              user_id: 0
             })
           }
       }).catch(error => {
@@ -125,7 +117,7 @@ function UserProvider({ children }){
 
   return (
     <UserContext.Provider value={{
-      user, 
+      userState, 
       updateUser: updateUser,
       getUser: getUser,
       handleUserChange: handleUserChange,

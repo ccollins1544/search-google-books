@@ -7,7 +7,7 @@ import { fas, faBook, faUser, faUserSlash , faUserPlus} from "@fortawesome/free-
 import "./style.css";
 
 const Header = () => {
-  const { user, handleLogout} = useContext(UserContext);
+  const { userState, handleLogout} = useContext(UserContext);
 
   return (
     <header className="App-header" id="nav-container">
@@ -19,9 +19,9 @@ const Header = () => {
               <li className="nav-item">
                 <Link to="/saved" className="nav-link"><FontAwesomeIcon icon={faBook} /> Saved</Link>
               </li>
-              {user.loggedIn ? (
+              {userState.loggedIn ? (
                 <li className="nav-item">
-                  <Link to="/#" className="nav-link" onClick={(e) => handleLogout(e)}><FontAwesomeIcon icon={faUserSlash} /> {user.username}</Link>
+                  <Link to="/#" className="nav-link" onClick={(e) => handleLogout(e)}><FontAwesomeIcon icon={faUserSlash} /> {userState.username}</Link>
                 </li>
               ) : (
                 <>

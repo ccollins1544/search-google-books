@@ -8,10 +8,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
-  const { user, handleUserChange, handleLoginSubmit } = useContext(UserContext);
+  const { userState, handleUserChange, handleLoginSubmit } = useContext(UserContext);
 
-  if (user.redirectTo) {
-      return <Redirect to={{ pathname: user.redirectTo }} />
+  if (userState.redirectTo) {
+      return <Redirect to={{ pathname: userState.redirectTo }} />
   } else {
     return (
       <Wrapper className="App" id="main-container">
@@ -31,7 +31,7 @@ const Login = () => {
                       id="username"
                       name="username"
                       placeholder="Username"
-                      value={user.username}
+                      value={userState.username}
                       onChange={(e) => handleUserChange(e)}
                     />
                   </div>
@@ -43,7 +43,7 @@ const Login = () => {
                       name="password"
                       type="password"
                       placeholder="password"
-                      value={user.password}
+                      value={userState.password}
                       onChange={(e) => handleUserChange(e)}
                     />
                   </div>

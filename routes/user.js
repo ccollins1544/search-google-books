@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Book = require('../models/book');
 const passport = require('../passport');
 
 router.post('/', (req, res) => {
@@ -62,14 +63,27 @@ router.get('/', (req, res, next) => {
   }
 })
 
+router.get('/books/:user_id', (req, res) => {
+  console.log('getting users books', req.params.user_id);
+  Book.find({ 'user' : { $eq: req.params.user_id, $exists: true, $ne: null }})
+    .populate("user")
+    .sort({
+      date: -1
+    })
+    .then(dbBooks => res.json(dbBooks))
+    .catch(err => res.status(422).json(err));
+})
+
 router.post('/logout', (req, res) => {
   if (req.user) {
     req.logout()
     res.send({
+      status: 200,
       msg: 'logging out'
     })
   } else {
     res.send({
+      status: 203,
       msg: 'no user to log out'
     })
   }

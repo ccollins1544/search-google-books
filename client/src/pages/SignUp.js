@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
-  const { user, handleUserChange, handleRegisterSubmit } = useContext(UserContext);
+  const { userState, handleUserChange, handleRegisterSubmit } = useContext(UserContext);
 
   return (
     <Wrapper className="App" id="main-container">
@@ -28,7 +28,7 @@ const SignUp = () => {
                     id="username"
                     name="username"
                     placeholder="Username"
-                    value={user.username}
+                    value={userState.username}
                     onChange={(e) => handleUserChange(e)}
                   />
                 </div>
@@ -40,7 +40,7 @@ const SignUp = () => {
                     name="password"
                     type="password"
                     placeholder="password"
-                    value={user.password}
+                    value={userState.password}
                     onChange={(e) => handleUserChange(e)}
                   />
                 </div>

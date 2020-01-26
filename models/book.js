@@ -35,6 +35,10 @@ const bookSchema = new Schema({
   language: String,
   preview_link: String,
   canonical_volume_link: String,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   date: { 
     type: Date, 
     default: Date.now 

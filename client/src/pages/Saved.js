@@ -6,20 +6,31 @@ import Book from "../components/Book";
 import UserContext from "../UserContext";
 
 const Saved = () => {
-  const { user, getUser } = useContext(UserContext);
+  const { userState, getUser } = useContext(UserContext);
   const [ books, setBooks ] = useState([]);
   
   useEffect(() => {
-    getUser();
+    if(userState.user_id === 0 || !userState.user_id ){
+      getUser();
+    }
 
-    API.getBooks()
-    .then( res => res.json() )
-    .then( json => setBooks(json));
-    // .then( json => { console.log(json); setBooks(json); });
+    if(userState.user_id !== 0){
+      // console.log('get user books');
+      API.getUsersBooks(userState.user_id)
+      .then( response => response.data )
+      .then( json => setBooks(json));
+    }else{
+      // console.log('get demo books', userState);
+      API.getBooks()
+      .then( res => res.json() )
+      .then( json => setBooks(json));
+    }
+
   }, []);
 
   const deleteBook = (index) => {
     let { _id } = books[index];
+    let { user_id } = userState;
 
     API.deleteBook(_id)
       .then(() => (API.getBooks()))
@@ -39,6 +50,7 @@ const Saved = () => {
                 key={_id}
                 id={_id}
                 book_id={book_id}
+                user_id={userState.user_id}
                 index={index}
                 action_button="delete"
                 action_callback={deleteBook}

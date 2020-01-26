@@ -9,12 +9,14 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import UserContext from "../UserContext";
 
 const Search = () => {
-  const { user, getUser } = useContext(UserContext);
+  const { userState, getUser } = useContext(UserContext);
   const [ BookSearched, setBookSearched ] = useState("");
   const [ SearchResults, setSearchResults ] = useState(null);
   
-  useEffect(() => {
-    // getUser();
+  useEffect(() => { 
+    if(userState.user_id === 0 || !userState.user_id ){
+      getUser();
+    }
 
     API.searchBook(BookSearched)
       .then( res => res.json() )
@@ -57,10 +59,11 @@ const Search = () => {
       "canonical_volume_link": canonicalVolumeLink 
     };
 
-    console.log("BookData", bookData);
+    let { user_id } = userState;
+    bookData = {...bookData, user_id: user_id };
+
     API.getBook(bookData.book_id)
       .then(response => {
-        console.log("Response", response.data.length)
         if(response.data.length === 0){
           API.saveBook(bookData)
             .then(res => {
@@ -115,6 +118,7 @@ const Search = () => {
               <Book
                 key={id}
                 id={id}
+                user_id={userState.user_id} 
                 index={index}
                 action_button={saved ? "saved" : "save"}
                 action_callback={saveBook}

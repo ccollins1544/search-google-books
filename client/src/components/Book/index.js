@@ -5,7 +5,7 @@ import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas, faSave, faTrashAlt, faEye, faCheck} from "@fortawesome/free-solid-svg-icons";
 
-const Book = ({ id, book_id, index, action_button, action_callback, title, card_image, imageLinks, previewLink, canonicalVolumeLink, authors, publisher, publishedDate, categories, description, pageCount, averageRating, language}) => {
+const Book = ({ id, book_id, user_id, index, action_button, action_callback, title, card_image, imageLinks, previewLink, canonicalVolumeLink, authors, publisher, publishedDate, categories, description, pageCount, averageRating, language}) => {
   let cat = categories ? categories.map(c => c.replace(/\//g,'')) : [];
   
   const renderButtons = (action, action_cb, link, i) => {

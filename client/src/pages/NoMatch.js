@@ -9,7 +9,7 @@ import UserContext from "../UserContext";
 
 function NoMatch() {
   let location = useLocation();
-  const { user, getUser } = useContext(UserContext);
+  const { userState, getUser } = useContext(UserContext);
 
   return (
     <Wrapper className="App" id="main-container">
@@ -25,7 +25,7 @@ function NoMatch() {
             </h1>
           </Jumbotron>
           <Col size="md-12">
-            <pre>{JSON.stringify(user, null, 2)}</pre>
+            <pre>{JSON.stringify(userState, null, 2)}</pre>
             <div>
               <button onClick={() => getUser()}>Get User</button>
             </div>
