@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import Wrapper from "../components/Wrapper";
 import { SectionRow , Col } from "../components/Grid";
@@ -6,12 +6,16 @@ import Card from "../components/Card";
 import Book from "../components/Book";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import UserContext from "../UserContext";
 
 const Search = () => {
+  const { user, getUser } = useContext(UserContext);
   const [ BookSearched, setBookSearched ] = useState("");
   const [ SearchResults, setSearchResults ] = useState(null);
   
   useEffect(() => {
+    // getUser();
+
     API.searchBook(BookSearched)
       .then( res => res.json() )
       .then( json => { 
@@ -89,7 +93,13 @@ const Search = () => {
                     onChange={e => setBookSearched(e.target.value)}
                   />
                   <span className="input-group-btn">
-                    <button onClick={(e) => {e.preventDefault(); setSearchResults(null) }} type="button" className="btn btn-light ml-2"><FontAwesomeIcon icon={faTrash} /> Clear Results</button>
+                    <button 
+                      className="btn btn-light ml-2"
+                      type="button" 
+                      onClick={(e) => {e.preventDefault(); setSearchResults(null) }} 
+                    >
+                      <FontAwesomeIcon icon={faTrash} /> Clear Results
+                    </button>
                   </span>
                 </div>
               </div>

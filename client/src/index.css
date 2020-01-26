@@ -241,6 +241,10 @@ textarea {
   line-height: inherit;
 }
 
+.form-input {
+  width: 100%;
+}
+
 .form-row {
   display: -ms-flexbox;
   display: flex;

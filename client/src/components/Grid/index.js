@@ -18,13 +18,10 @@ export function SectionRow({ fluid, id, children }) {
 
 // This Col component lets us size bootstrap columns with less syntax
 // e.g. <Col size="md-12"> instead of <div className="col-md-12">
-export function Col({ size, children }) {
+export function Col({ size, addClass, children }) {
   return (
     <div
-      className={size
-        .split(" ")
-        .map(size => "col-" + size)
-        .join(" ")}
+      className={[size.split(" ").map(size => "col-" + size).join(" "), addClass].join(" ")}
     >
       {children}
     </div>

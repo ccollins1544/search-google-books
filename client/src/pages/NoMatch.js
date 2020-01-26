@@ -1,17 +1,21 @@
-import React from "react";
-import { Col, Row, Container } from "../components/Grid";
+import React, { useContext } from "react";
+import API from "../utils/API";
+import Wrapper from "../components/Wrapper";
+import { Col, Row, SectionRow, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { useLocation } from "react-router-dom";
+import UserContext from "../UserContext";
+
 
 function NoMatch() {
   let location = useLocation();
+  const { user, getUser } = useContext(UserContext);
 
   return (
-    <Container fluid>
-      <Row>
+    <Wrapper className="App" id="main-container">
+      <SectionRow id="main-section">
         <Col size="md-12">
           <Jumbotron>
-        
             <h1>404 Page Not Found</h1>
             <h3>No match for <code>{location.pathname}</code></h3>
             <h1>
@@ -19,11 +23,16 @@ function NoMatch() {
                 🙄
               </span>
             </h1>
-
           </Jumbotron>
+          <Col size="md-12">
+            <pre>{JSON.stringify(user, null, 2)}</pre>
+            <div>
+              <button onClick={() => getUser()}>Get User</button>
+            </div>
+          </Col>
         </Col>
-      </Row>
-    </Container>
+      </SectionRow>
+    </Wrapper>
   );
 }
 

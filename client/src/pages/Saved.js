@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import Wrapper from "../components/Wrapper";
 import { SectionRow , Col } from "../components/Grid";
 import Book from "../components/Book";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faTrash } from "@fortawesome/free-solid-svg-icons";
-// const mongoose = require("mongoose");
+import UserContext from "../UserContext";
 
 const Saved = () => {
+  const { user, getUser } = useContext(UserContext);
   const [ books, setBooks ] = useState([]);
   
   useEffect(() => {
+    getUser();
+
     API.getBooks()
     .then( res => res.json() )
     .then( json => setBooks(json));
