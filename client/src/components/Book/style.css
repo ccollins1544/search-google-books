@@ -1,0 +1,16 @@
+tbody td.book_image {
+  min-width: 225px;
+  padding: 0px !important;
+}
+
+.table {
+  margin-bottom: 0px;
+}
+
+.table td, .table th {
+  border-top: none
+}
+
+.table .book_image .image_wrap {
+  margin-bottom: 15px;
+}

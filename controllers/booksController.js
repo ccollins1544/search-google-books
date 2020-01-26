@@ -13,7 +13,15 @@ module.exports = {
 
   findByTitle: function (req, res) {
     db.Book.find({
-        title: req.params.id
+        title: req.params.title
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  findById: function (req, res) {
+    db.Book.find({
+        book_id: req.params.book_id
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
