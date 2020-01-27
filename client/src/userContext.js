@@ -5,7 +5,7 @@ const UserContext = React.createContext({});
 export const UserConsumer = UserContext.Consumer;
 
 function UserProvider({ children }){
-
+  
   const [userState, setUser] = useState({
     loggedIn: false,
     username: null,
