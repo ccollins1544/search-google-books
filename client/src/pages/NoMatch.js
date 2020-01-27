@@ -4,7 +4,7 @@ import Wrapper from "../components/Wrapper";
 import { Col, Row, SectionRow, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { useLocation } from "react-router-dom";
-import UserContext from "../UserContext";
+import UserContext from "../userContext";
 
 
 function NoMatch() {

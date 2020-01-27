@@ -1,6 +1,6 @@
 import React, { Component, useContext } from "react";
 import { Redirect, Route, Link } from "react-router-dom";
-import UserContext from "../../UserContext";
+import UserContext from "../../userContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab, faGoogle} from "@fortawesome/free-brands-svg-icons";
 import { fas, faBook, faUser, faUserSlash , faUserPlus} from "@fortawesome/free-solid-svg-icons";

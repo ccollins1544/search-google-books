@@ -6,7 +6,7 @@ import Card from "../components/Card";
 import Book from "../components/Book";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import UserContext from "../UserContext";
+import UserContext from "../userContext";
 
 const Search = () => {
   const { userState, getUser } = useContext(UserContext);

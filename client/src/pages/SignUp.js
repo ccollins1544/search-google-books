@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import { Col, Row, SectionRow, Container } from "../components/Grid";
 import Card from "../components/Card";
-import UserContext from "../UserContext";
+import UserContext from "../userContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 
