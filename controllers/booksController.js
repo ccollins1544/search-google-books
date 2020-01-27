@@ -42,12 +42,13 @@ module.exports = {
         req.body.user = dbModel[0]._id;
 
         db.Book.create(req.body)
+          .then(dbBook => db.User.findOneAndUpdate({ _id: req.body.user }, { $push: { book:dbBook._id } }, { new: true }))
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err))
       }).catch(err => res.status(422).json(err));
     }else{
       db.Book.create(req.body)
-        .then(dbBook => db.User.findOneAndUpdate({ _id: user_id }, { $push: { book:dbBook._id } }, { new: true }))
+        .then(dbBook => db.User.findOneAndUpdate({ _id: req.body.user }, { $push: { book:dbBook._id } }, { new: true }))
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }
