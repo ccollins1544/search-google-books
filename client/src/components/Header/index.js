@@ -13,7 +13,7 @@ const Header = () => {
     <header className="App-header" id="nav-container">
       <div className="container-fluid clearfix" >
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="main-nav" >
-          <Link className="navbar-brand mb-0 h1" to="."><FontAwesomeIcon icon={faGoogle} /> Search Google Books</Link>
+          <a className="navbar-brand mb-0 h1" href="."><FontAwesomeIcon icon={faGoogle} /> Search Google Books</a>
           <div className="navbar-collapse collapse show">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">

@@ -1,6 +1,15 @@
 # Search Google Books
 
-This app searches books on via the google books api. 
+This app searches books on via the google books api and allows the user to save books. 
+
+By default all books are saved to the demo user account which can be accessed with 
+
+```
+user: demo
+password: 1234
+```
+
+If a user wants to register the saved books will be saved for the user logged in. That way logging in only shows the books saved by the logged in user. 
 
 # Using Search Google Books
 

@@ -16,19 +16,19 @@ function Footer(){
         <div className="navbar-collapse">
           <ul className="navbar-nav">
             <li className="nav-item"> 
-              <Link className="nav-link" to="https://www.linkedin.com/in/ccollins1544/" target="_blank" >
+              <a className="nav-link" href="https://www.linkedin.com/in/ccollins1544/" target="_blank" >
                 <FontAwesomeIcon icon={faLinkedin} size="2x" />
-              </Link>
+              </a>
             </li>
             <li className="nav-item"> 
-              <Link className="nav-link" to="https://dev.to/ccollins" target="_blank">
+              <a className="nav-link" href="https://dev.to/ccollins" target="_blank">
                 <FontAwesomeIcon icon={faDev} size="2x" />
-              </Link>
+              </a>
             </li>
             <li className="nav-item"> 
-              <Link className="nav-link" to="https://ccollins1544.github.io/" target="_blank">
+              <a className="nav-link" href="https://ccollins1544.github.io/" target="_blank">
                 <FontAwesomeIcon icon={faGithub} size="2x" />
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
@@ -37,8 +37,8 @@ function Footer(){
       <div id="footer-bottom">
         <div id="footer-info">
           Copyright © 2019 | 
-          <Link className="footer-link" to="."> Search Google Books</Link> |
-          <Link className="footer-link" to="https://github.com/ccollins1544/search-google-books"> Coding Bootcamp</Link>
+          <a className="footer-link" href="."> Search Google Books</a> |
+          <a className="footer-link" href="https://github.com/ccollins1544/search-google-books"> Coding Bootcamp</a>
         </div>
       </div>
     </footer>
