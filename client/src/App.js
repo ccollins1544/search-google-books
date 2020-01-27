@@ -1,7 +1,7 @@
 import React, { Component, useContext } from "react";
 import { BrowserRouter as Router, Route, Link, Switch, Redirect, useLocation } from "react-router-dom";
-import { UserProvider } from "./UserContext.js";
-import UserContext from "./UserContext.js";
+import { UserProvider } from "./UserContext";
+import UserContext from "./UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Header from "./components/Header";
