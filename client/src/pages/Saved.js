@@ -61,8 +61,8 @@ const Saved = () => {
                 description={description}
                 pageCount={page_count}
                 categories={categories}
-                // averageRating={average_rating.hasOwnProperty("$numberDecimal") ? parseFloat(average_rating.$numberDecimal) : ""}
-                imageLinks={image_links.length > 0 ? image_links[0] : []}
+                averageRating={!average_rating ? "" : (average_rating.hasOwnProperty("$numberDecimal") ? parseFloat(average_rating.$numberDecimal) : "")}
+                imageLinks={!image_links ? [] : (image_links.length > 0 ? image_links[0] : [])}
                 language={language}
                 previewLink={preview_link}
                 canonicalVolumeLink={canonical_volume_link}

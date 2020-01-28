@@ -37,7 +37,7 @@ function Footer(){
       <div id="footer-bottom">
         <div id="footer-info">
           Copyright © 2019 | 
-          <a className="footer-link" href="."> Search Google Books</a> |
+          <Link to="/" className="footer-link" > Search Google Books</Link> |
           <a className="footer-link" href="https://github.com/ccollins1544/search-google-books"> Coding Bootcamp</a>
         </div>
       </div>

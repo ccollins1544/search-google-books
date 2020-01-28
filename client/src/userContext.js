@@ -109,6 +109,8 @@ function UserProvider({ children }){
               redirectTo: '/', 
               user_id: 0
             })
+
+            window.location.reload(true);
           }
       }).catch(error => {
         console.log('Logout error')

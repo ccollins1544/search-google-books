@@ -62,7 +62,7 @@ const Book = ({ id, book_id, user_id, index, action_button, action_callback, tit
               {authors && <h6 className="card-subtitle text-muted">Authors: {authors.join(", ")} | Publisher: {publisher} | Published: {publishedDate && format(new Date(publishedDate), "PPP")}</h6>}
               {categories && <small>Categories: {cat.join(", ")}</small>}
               <p className="card-text">{description}</p>
-              <small>Pages: {pageCount} | Rating: {averageRating} | Language: {language}</small>
+              <small>Pages: {pageCount} | {averageRating && `Rating: ${averageRating} | `}Language: {language}</small>
             </td>
           </tr>
         </tbody>
